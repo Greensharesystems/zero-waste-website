@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Nunito+Sans:wght@300&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -8,8 +9,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +21,186 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 300;
+}
+
+.ambient-orb {
+  position: absolute;
+  height: 16rem;
+  width: 16rem;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.32;
+  pointer-events: none;
+  animation: drift-orb 14s ease-in-out infinite;
+}
+
+.ambient-orb-emerald {
+  background: radial-gradient(circle, rgba(54, 179, 126, 0.34) 0%, rgba(54, 179, 126, 0) 72%);
+}
+
+.ambient-orb-sky {
+  background: radial-gradient(circle, rgba(47, 128, 237, 0.26) 0%, rgba(47, 128, 237, 0) 72%);
+  animation-duration: 18s;
+}
+
+.float-gentle {
+  animation: float-gentle 7s ease-in-out infinite;
+}
+
+.spotlight-sweep {
+  animation: spotlight-sweep 1.3s ease-out forwards;
+}
+
+.cta-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cta-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -140% auto -140% -30%;
+  width: 32%;
+  transform: rotate(18deg) translateX(-220%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+
+.cta-sheen:hover::after {
+  transform: rotate(18deg) translateX(520%);
+}
+
+.glass-shell {
+  background: linear-gradient(
+    to bottom,
+    #36b37e 0%,
+    #36b37e 74%,
+    rgba(54, 179, 126, 0.94) 88%,
+    rgba(54, 179, 126, 0.78) 100%
+  );
+  backdrop-filter: none;
+  border-bottom: none;
+}
+
+.hero-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.nav-link-fx {
+  position: relative;
+}
+
+.nav-link-fx::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.3rem;
+  height: 1px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  background: currentColor;
+  opacity: 0.72;
+}
+
+.nav-link-fx:hover::after {
+  transform: scaleX(1);
+}
+
+@keyframes drift-orb {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -22px, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes float-gentle {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes spotlight-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-grid::before {
+    background-size: 48px 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .glass-shell {
+    background: #36b37e;
+  }
+
+  .page-hero-shell::before {
+    opacity: 0;
+  }
+
+  .hero-grid .grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    min-height: auto;
+  }
+
+  .hero-grid .grid > :first-child {
+    justify-content: center;
+    padding-top: 0.5rem;
+  }
+
+  .hero-grid .grid > :last-child {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb,
+  .float-gentle,
+  .spotlight-sweep {
+    animation: none;
+  }
+
+  .cta-sheen::after {
+    transition: none;
+  }
+
+  .nav-link-fx::after {
+    transition: none;
+  }
 }
