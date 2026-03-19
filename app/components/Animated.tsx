@@ -56,7 +56,7 @@ export function RevealDiv({ children, delay = 0, ...props }: RevealProps) {
   const reducedMotion = useReducedMotion();
 
   return (
-    <motion.div {...buildReveal(delay, reducedMotion)} {...props}>
+    <motion.div {...buildReveal(delay, !!reducedMotion)} {...props}>
       {children}
     </motion.div>
   );
@@ -66,7 +66,7 @@ export function RevealHeading({ children, delay = 0, ...props }: HeadingProps) {
   const reducedMotion = useReducedMotion();
 
   return (
-    <motion.h2 {...buildReveal(delay, reducedMotion)} {...props}>
+    <motion.h2 {...buildReveal(delay, !!reducedMotion)} {...props}>
       {children}
     </motion.h2>
   );
@@ -76,7 +76,7 @@ export function RevealText({ children, delay = 0, ...props }: TextProps) {
   const reducedMotion = useReducedMotion();
 
   return (
-    <motion.p {...buildReveal(delay, reducedMotion)} {...props}>
+    <motion.p {...buildReveal(delay, !!reducedMotion)} {...props}>
       {children}
     </motion.p>
   );
