@@ -93,7 +93,8 @@ export default function Header() {
               </a>
 
               <Link
-                href="https://greenshare.ae"
+                 href="https://www.greenshare.ae"
+                 target="_self"
                 className="cta-sheen inline-flex w-fit justify-self-start self-start items-center justify-center rounded-full bg-[#2F80ED] px-3.5 py-2 text-[13px] font-medium text-white transition hover:scale-105 hover:bg-[#256fce] sm:col-span-2 sm:px-4 sm:text-sm sm:justify-self-start md:px-5 md:py-3"
               >
                 Login to Greenshare
